@@ -1,0 +1,75 @@
+{% include 'adminheader.html' %}
+
+<style type="text/css">
+	#hero{
+		background-image: url(/static/images/a4.jpg);
+		
+		
+	}
+</style>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <form method="post">
+<center>	
+<h1>staff allocate</h1>	
+<table class="table" style="width: 600px;color: #fff;">
+	<tr>
+		<td>staff</td> 
+		<td><select name="staff_id" required class="form-control"> 
+			<option selected>select</option> 
+			{% for row in data['staff_id'] %}  
+				<option value="{{ row['staff_id']}}">{{ row['names']}}</option>  
+			{% endfor %} 
+		</select>
+		</td>	
+	</tr>
+	
+	<tr>
+		<td>airport </td> 
+		<td><select name="airport_id" class="form-control"> 
+			<option selected>select</option> 
+			{% for row in data['airport_id'] %}  
+				<option value="{{ row['airport_id']}}">{{ row['name']}}</option>  
+			{% endfor %} 
+		</select>
+		</td>	
+	</tr>
+		
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="submit" value="Add"></td> 
+	</tr>	
+</table>
+</center>
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+<br><br><br>
+<center>
+	<h2>Allocate Staff</h2><br>
+<table class="table" style="width: 800px;">
+
+	<tr>
+		<th>Sl.no</th>
+		<th>staffid</th>
+		<th>airportid</th> 
+		
+	</tr> 
+	{% for row in data['allocate'] %}  
+	<tr>
+		<td>{{ loop.index}}</td>
+		<td>{{ row['names']}}</td> 
+		<td>{{ row['name']}}</td> 
+		
+		
+		<td><a class="btn btn-danger" href="?action=delete&id={{ row['allocate_id']}}">delete</a> 
+	</tr>
+	{% endfor %} 
+</table> 		
+<br><br>
+{% include 'footer.html' %}  
+

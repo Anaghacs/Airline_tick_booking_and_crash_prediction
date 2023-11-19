@@ -1,0 +1,82 @@
+{% include 'usersheader.html' %}
+<style type="text/css">
+	td{
+		text-align: center;
+	}
+
+  #hero{
+    background-image: url(/static/images/b4.jpg);  	
+    
+  }
+</style>
+
+
+	
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      	
+<form method="post">
+<center>
+<h1>bookroom</h1> 	
+<table class="table" style="width: 500px;color: #fff;">  
+	<tr>
+		<td>Room Rent Per Day</td> 
+		<td><select name="room_id" class="form-control">  
+			<option selected>select</option> 
+			{% for row in data['viewrooms'] %}  
+				<option value="{{ row['room_id']}}">Room No- {{ row['roomnumber']}} : Rs- {{ row['rate'] }}</option>  
+			{% endfor %} 
+		</select>
+		</td>	
+	</tr>	
+	<tr>
+		<td>From Date</td>
+		<td><input type="date" class="form-control" name="fromdate"></td> 
+	</tr> 
+	<tr>
+		<td>To Date</td>
+		<td><input type="date" class="form-control" name="todate"></td> 
+	</tr>  
+	<tr> 
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="Add"></td>  
+	</tr>  
+</table>
+</center> 
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+<center>
+<table class="table" style="width: 900px;">
+	<tr>
+		<th>Sl.no</th>
+		<th>Room Number</th> 
+		<th>Rent/Day</th>
+		<th>From Date</th> 
+		<th>To Date</th>
+		<th>Total Amount</th>
+		<th>Status</th> 
+		  
+		
+	</tr>
+	{% for row in data['bookroom'] %}  
+	<tr> 
+		<td>{{loop.index}}</td>
+		<td>{{ row['roomnumber']}}</td>
+		<td>{{ row['rate'] }}</td> 
+		<td>{{ row['fromdate']}}</td> 
+		<td>{{ row['todate']}}</td>
+		<td>{{ row['amount'] }}</td>
+		<td>{{ row['status']}}</td>
+	
+		
+	</tr>  
+	{% endfor %} 
+</table>  		
+</center>
+{% include 'footer.html' %}   
+	

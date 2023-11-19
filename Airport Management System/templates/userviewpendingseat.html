@@ -1,0 +1,29 @@
+{% include 'usersheader.html' %}
+<center>	
+<h1>Viewpendingseat</h1>  
+<table>
+	<tr>
+		
+		<th>type id</th>
+		<th>flight id</th> 
+		<th>seatno</th> 
+		
+		
+	</tr> 
+	{% for row in data['seats'] %} 
+	<tr>
+		
+		<td>{{ row['type_id']}}</td>  
+		<td>{{ row['flight_id']}}</td> 
+		<td>{{ row['seatno']}}</td>  
+		   
+	
+	</tr>	
+	{% endfor %} 
+</table> 	
+</center> 	
+{% include 'footer.html' %}	 	
+
+
+		  
+	

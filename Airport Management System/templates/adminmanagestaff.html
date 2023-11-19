@@ -1,0 +1,136 @@
+{% include 'adminheader.html' %}
+
+<style type="text/css">
+	#hero{
+		background-image: url(/static/images/a3.jpg);
+		height: 1000px;
+		
+	}
+</style>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" >
+    <div class="hero-container">
+      
+<form method="post">
+<center>	
+{%if data['upd']%}
+<h1>Manage Staff</h1> 
+<table class="table" style="width: 500px;color: #fff;">
+	<tr>
+		<td>First name</td> 
+		<td><input type="text" class="form-control" name="fname" value="{{data['upd'][0]['firstname']}}"></td> 
+	</tr>
+	<tr>
+		<td>Last name</td>
+		<td><input type="text" class="form-control" name="lname" value="{{data['upd'][0]['lastname']}}"></td> 
+	</tr>
+	<tr>
+		<td>Gender</td>
+		
+		<td><input type="radio" checked name="gender" value="Male">&nbsp;&nbsp;&nbsp;Male&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="Female">&nbsp;&nbsp;&nbsp;Female</td>
+	</tr>
+	<tr>
+		<td>Age</td>
+		<td><input type="text" class="form-control" name="age" value="{{data['upd'][0]['age']}}"></td>
+	</tr>
+	<tr>
+		<td>Phone</td>
+		<td><input type="text" class="form-control" name="phone" value="{{data['upd'][0]['phone']}}"></td>		
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td><input type="text" class="form-control" name="email" value="{{data['upd'][0]['email']}}"></td> 
+	</tr>
+	<tr>
+		<td>Designation</td>
+		<td><input type="text" class="form-control" name="designation" value="{{data['upd'][0]['designation']}}"></td>
+	</tr> 
+	<tr>
+		<td colspan="2" align="center"><input type="submit" name="update" value="Update" class="btn btn-warning"></td>
+	</tr>
+</table>
+{%else%}
+<h1>Manage Staff</h1> 
+<table class="table" style="width: 500px;color: #fff;">
+	<tr>
+		<td>First name</td> 
+		<td><input type="text" class="form-control" name="fname"></td> 
+	</tr>
+	<tr>
+		<td>Last name</td>
+		<td><input type="text" class="form-control" name="lname"></td> 
+	</tr>
+	<tr>
+		<td>Gender</td>
+		
+		<td><input type="radio" checked name="gender" value="Male">&nbsp;&nbsp;&nbsp;Male&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="Female">&nbsp;&nbsp;&nbsp;Female</td>
+	</tr>
+	<tr>
+		<td>Age</td>
+		<td><input type="text" class="form-control" name="age"></td>
+	</tr>
+	<tr>
+		<td>Phone</td>
+		<td><input type="text" class="form-control" name="phone"></td>		
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td><input type="text" class="form-control" name="email"></td> 
+	</tr>
+	<tr>
+		<td>Designation</td>
+		<td><input type="text" class="form-control" name="designation"></td>
+	</tr> 
+	<tr>
+		<td>Username</td>
+ 		<td><input type="text" class="form-control" name="username"></td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td><input type="text" class="form-control" name="password"></td> 
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="submit" value="register"></td>  
+		
+	</tr>
+</table>
+</form> 
+</center>
+{%endif%}
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+<br><br><br>
+<center>
+<table class="table" style="width: 1000px;">
+	<h2>Staff Details</h2><br>
+	<tr>
+		<th>First name</th>  
+		<th>Last name</th>
+		<th>Gender</th>
+		<th>Age</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>Designation</th> 
+	</tr>
+	{% for row in data['staff'] %} 
+	<tr>
+		<td>{{ row['firstname']}}</td> 
+		<td>{{ row['lastname']}}</td> 
+		<td>{{ row['gender']}}</td> 
+		<td>{{ row['age']}}</td> 
+		<td>{{ row['phone']}}</td> 
+		<td>{{ row['email']}}</td> 
+		<td>{{ row['designation']}}</td> 
+		<td><a class="btn btn-warning" href="?action=update&id={{ row['staff_id']}}">Update</td> 
+		<td><a class="btn btn-danger" href="?action=delete&id={{ row['staff_id']}}">delete</td>   
+	</tr>
+	{% endfor %} 
+</table> 		
+</center>
+<br><br>
+{% include 'footer.html' %} 
+
+

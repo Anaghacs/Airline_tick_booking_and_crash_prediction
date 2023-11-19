@@ -1,0 +1,93 @@
+{% include 'adminheader.html' %}
+<style type="text/css">
+	#hero{
+		background-image: url(/static/images/a4.jpg);
+		
+		
+	}
+	td{
+		text-align: center;
+	}
+</style>
+
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      	
+<form method="post">
+<center>	
+
+{% if data['updateflights'] %} 
+<h1>Update Flights</h1> 
+<table class="table" style="width: 600px; color : #fff;">
+	<tr>
+		<td>Flight</td> 
+		<td><input type="text" class="form-control" name="flight" value="{{data['updateflights'][0]['flight']}}"></td> 
+	</tr>
+	<tr>
+		<td>Company</td>
+		<td><input type="text" class="form-control" name="company" value="{{data['updateflights'][0]['company']}}"></td>        
+	</tr>	
+	<tr>
+		<td>No Of Seats</td>
+		<td><input type="text" class="form-control" name="noofseats" value="{{data['updateflights'][0]['noofseats']}}"></td>     
+	</tr>		
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-warning" name="update" value="UPDATE"></td>  
+	</tr> 	
+</table> 
+{% else %}
+
+<h1>Add Flights</h1> 
+<table class="table" style="width: 600px; color : #fff;">
+	<tr>
+		<td>Flight</td> 
+		<td><input type="text" class="form-control" name="flight"></td> 
+	</tr>
+	<tr>
+		<td>Company</td>
+		<td><input type="text" class="form-control" name="company"></td> 
+	</tr>
+	<tr>
+		<td>No Of Seats</td>
+		<td><input type="text" class="form-control" name="noofseats"></td>
+	</tr>	
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="ADD"></td> 
+	</tr> 
+</table>
+{% endif %} 
+</center>
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+  
+<center>
+<table class="table" style="width: 700px;">
+	<h2>Flight Details</h2>
+	<tr>
+		<th>Flight</th>  
+		<th>Company</th>
+		<th>No Of Seats</th> 
+		
+	</tr> 
+	{% for row in data['flights'] %} 
+	<tr>
+		<td>{{ row['flight']}}</td> 
+		<td>{{ row['company']}}</td>
+		<td>{{ row['noofseats']}}</td>
+		<td><a class="btn btn-warning" href="?action=update&id={{ row['flight_id']}}">update</a> 
+		<td><a class="btn btn-danger" href="?action=delete&id={{ row['flight_id']}}">delete</a> 
+	</tr>
+	{% endfor %} 
+</table> 
+</center>		
+{% include 'footer.html' %}   
+
+ 	

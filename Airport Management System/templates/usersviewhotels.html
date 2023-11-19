@@ -1,0 +1,53 @@
+{% include 'usersheader.html' %}
+<style type="text/css">
+	td{
+		text-align: center;
+	}
+
+  #hero{
+    background-image: url(/static/images/b3.jpg);  	
+    
+  }
+</style>
+
+	
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <!-- <h1>Easy start with Vlava</h1>
+      <h2>We are team of talanted designers making websites with Bootstrap</h2>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+  	
+<center>	
+<h1>View hotels</h1>  
+<table class="table" style="width: 800px;">  
+	<tr>
+		
+		<th>Country</th>
+		<th>Place</th>
+		<th>Hotel</th>
+		<th>Pincode</th> 
+		
+		
+	</tr> 
+	{% for row in data['hotels'] %} 
+	<tr>
+		
+		<td>{{ row['country'] }}</td>
+		<td>{{ row['place']}}</td>  
+		<td>{{ row['hotel']}}</td>
+		<td>{{ row['pincode']}}</td>  
+		
+
+		<td><a class="btn btn-primary" href="usersbookroom?id={{ row['hotel_id']}}">Bookroom</a></td>  
+			
+	</tr>	
+	{% endfor %} 
+</table> 	
+</center> 	
+{% include 'footer.html' %}	 

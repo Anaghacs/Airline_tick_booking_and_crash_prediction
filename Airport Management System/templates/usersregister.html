@@ -1,0 +1,70 @@
+{% include 'publicheader.html' %}
+
+<style type="text/css">
+	
+	#hero{
+		background-image: url(/static/images/a3.jpg);
+		height: 1000px;
+	}
+	td{
+		color: #fff;
+	}
+</style>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+    	<br><br><br>
+      <center>
+	<h1>Register</h1>
+	<form method="post" enctype="multipart/form-data">
+	<table class="table" style="width: 500px;">
+		<tr>
+			<td>First name</td>
+			<td><input type="text" class="form-control" name="fname"></td> 
+		</tr>
+		<tr>
+			<td>Last name</td>
+			<td><input type="text" class="form-control" name="lname"></td> 
+		</tr>
+		<tr>
+			<td>Place</td>
+			<td><input type="place" class="form-control" name="place"></td> 
+		</tr>	
+		<tr>
+			<td>Phone</td>
+			<td><input type="number" class="form-control" name="phone"></td> 
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><input type="email" class="form-control" name="email"></td>
+		</tr>
+		
+
+		
+		<tr>
+			<td>Upload Covid Certificate</td>
+			<td><input type="file" class="form-control" name="images"></td>
+		</tr>
+		<tr>
+			<td>Username</td>
+			<td><input type="text" class="form-control" name="username"></td> 
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><input type="password" class="form-control" name="password"></td>  
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="submit" value="Register"></td> 
+		</tr>
+	</table>
+</form> 
+</center> 
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main"> 
+
+
+	
+{% include 'footer.html' %}  

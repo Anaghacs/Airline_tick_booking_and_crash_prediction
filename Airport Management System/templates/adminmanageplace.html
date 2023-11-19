@@ -1,0 +1,91 @@
+{% include 'adminheader.html' %}
+
+<style type="text/css">
+	#hero{
+		background-image: url(/static/images/aa4.jpg);
+		
+		
+	}
+</style>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      	
+<form method="post">
+{% if data['updateplace'] %} 
+<h1>Update Place</h1>
+<table class="table" style="width: 500px;color: #fff;">
+	<tr>
+		<td>Country</td>
+		<td><select name="country_id" class="form-control"> 
+			{% for row in data['updatecountries'] %} 
+				<option value="{{ row['country_id']}}">{{ row['country']}}</option> 
+			{% endfor %} 
+		</select>
+		</td>		
+	</tr> 
+	<tr>
+		<td>State and Place</td>
+		<td><input type="text" class="form-control" name="place" value="{{ data['updateplace'][0]['place']}}"></td> 
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-warning" name="update" value="Update"></td> 
+    </tr>	
+</table>
+{% else %} 
+<center>  	
+<h1>Add Place</h1> 
+
+<table class="table" style="width: 500px;color: #fff;">
+	<tr>
+		<td>Country</td> 
+		<td><select name="country_id" class="form-control"> 
+			<option selected>--select--</option> 
+			{% for row in data['country_id'] %} 
+				<option value="{{ row['country_id']}}">{{ row['country']}}</option> 
+			{% endfor %} 
+		</select>
+		</td>		
+	</tr>
+	<tr>
+		<td>State and Place</td> 
+		<td><input type="text" class="form-control" name="place" placeholder="Seperate both with a '-'"></td> 
+	</tr> 
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="Add"></td> 
+	</tr>
+</table>
+
+{% endif %} 
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+  <center>
+
+<table class="table" style="width: 800px;">
+	<br>
+	<h2>Place Details</h2><br>
+	<tr>
+		<th>Country</th> 
+		<th>State and Place</th>
+		
+	</tr> 
+	{% for row in data['place'] %} 
+	<tr> 
+		<td>{{ row['country']}}</td>   
+		<td>{{ row['state_place']}}</td> 
+		<td><a class="btn btn-danger" href="?action=delete&id={{ row['place_id']}}">delete</a></td>    
+		<td><a class="btn btn-warning" href="?action=update&id={{ row['place_id']}}">update</a></td>    
+		
+	</tr>
+	{% endfor %} 
+</table> 
+</center>		
+
+{% include 'footer.html' %} 
+
+ 	
+				

@@ -1,0 +1,143 @@
+{% include 'usersheader.html' %}
+
+<style type="text/css">
+	td{
+		text-align: center;
+	}
+
+  #hero{
+    background-image: url(/static/images/a1.jpg);
+  	height:1000px; 
+    
+  }
+</style>
+
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        function sum() {
+            var txtFirstNo = document.getElementById('amount').value;
+            var nop = document.getElementById('nop').value;
+            var av_seat = document.getElementById('av_seat').value;
+            if(parseInt(nop)<=parseInt(av_seat)){
+            	var result = parseInt(txtFirstNo) * parseInt(nop);
+            	document.getElementById('total').value = result;
+            }
+            else{
+            	document.getElementById('total').value = "";
+            	document.getElementById('nop').value = "";
+            	alert("Less Seats Available");
+
+            }
+            
+        }
+    </script>
+
+
+      <!-- ======= Hero Section ======= -->
+  <section id="hero" >
+    <div class="hero-container">
+      
+<form method="post">
+<center>
+	<br><br>
+<h1>userbook</h1>	
+<table class="table" style="width: 500px;color: #fff;">
+	<tr>
+		<td>Flight</td> 
+		<td><input type="text" class="form-control" readonly name="flight" value="{{ data['val'][0]['flight']}}" ></td> 
+	</tr>
+	<tr>
+		<td>Total Seat</td> 
+		<td><input type="text" class="form-control" readonly name="tseat" value="{{ data['val'][0]['noofseats']}}" ></td> 
+	</tr>
+	<tr>
+		<td>Available Seat</td> 
+		<td><input type="text" class="form-control" readonly name="avseat" id="av_seat" value="{{ data['av_seat'] }}" ></td> 
+	</tr>
+	
+	<tr>
+		<td>From airport</td>
+		<td><input type="text" class="form-control"  name="fairport" readonly value="{{ data['val'][0]['fname']}}"></td> 
+	</tr>
+	<tr>
+		<td>To airport</td>
+		<td><input type="text" class="form-control" name="tairport" readonly value="{{ data['val'][0]['tname']}}"></td>
+	</tr>	
+	<tr>
+		<td>Start Date Time</td>
+		<td><input type="text" class="form-control" name="start_date_time" readonly value="{{ data['val'][0]['start_date_time']}}"></td>
+	</tr>
+	<tr>
+		<td>End Date Time</td>
+		<td><input type="text" class="form-control" name="end_date_time" readonly value="{{ data['val'][0]['end_date_time']}}"></td>
+	</tr>
+	<tr>
+		<td>Amount</td>
+		<td><input type="text" class="form-control" readonly name="amount" id="amount" value="{{ data['val'][0]['t_amount']}}"></td>
+	</tr>
+	<tr>
+		<td>No of passengers</td>
+		<td><input type="text" class="form-control" name="noofpassengers" required id="nop" onkeyup="sum()" ></td> 
+
+	</tr>
+	
+	<tr>
+		<td>Total</td>
+		<td><input type="text" class="form-control" name="total" id="total" readonly required></td> 
+
+	</tr> 
+
+
+
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="Add"></td>  
+	</tr> 
+</table>	
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+
+<center>
+
+<table class="table" style="width: 1200px;">
+	<tr>
+		
+		<th>Flight</th>
+		<th>From airport</th> 
+		<th>To airport</th> 
+		<th>Start Date Time</th> 
+		<th>End Date Time</th> 
+		<th>Amount</th> 
+		<th>No Of Passengers</th> 
+
+	</tr>
+	{% for row in data['booked'] %} 
+	<tr>
+		<td>{{ row['flight']}}</td> 
+		<td>{{ row['fname']}}</td>
+		<td>{{ row['tname']}}</td>
+		<td>{{ row['start_date_time']}}</td>   
+		<td>{{ row['end_date_time']}}</td> 	
+		<td>{{ row['amount']}}</td>
+		<td>{{ row['noofpassengers']}}</td> 
+		<td><a class="btn btn-primary btn-sm" href="userpassengerdetails?bid={{ row['booked_id']}}&no_pas={{ row['noofpassengers'] }}">Add Passengers</a> 
+		<td><h2 style="color: red;">Max luggage capasity is 30kg/-</h2>
+		<td><a href="userbookseat?uid={{row['user_id']}}&fid={{row['flight_id']}}">Select Seat</a></td>
+
+		<!-- <td><a href="usersviewflights?fid={{ row['flight_id']}}">view flights</a>  	 -->
+			
+
+
+	</tr> 	
+	{% endfor %} 
+</table> 
+</center>		
+{% include 'footer.html' %}     
+
+
+

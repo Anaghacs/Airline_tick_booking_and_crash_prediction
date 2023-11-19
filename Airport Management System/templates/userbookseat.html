@@ -1,0 +1,45 @@
+{% include 'usersheader.html' %}
+<style type="text/css">
+	td{
+		text-align: center;
+	}
+
+  #hero{
+    background-image: url(/static/images/b4.jpg);  	
+    
+  }
+</style>
+
+
+	
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      	
+<form method="post">
+<center>
+<h1>bookroom</h1> 	
+<table class="table" style="width: 500px;color: #fff;">  
+    <tr>
+        <th>Select Seat</th>
+        <td><select name="seat" id="">
+            {%for row in data['view']%}
+            <option value="{{row['seat_id']}}">{{row['type']}} - {{row['seatno']}}</option>
+            {%endfor%}
+        </select></td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-info"></td>
+    </tr>
+</table>
+</center> 
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+  		
+</center>
+{% include 'footer.html' %}   
+	

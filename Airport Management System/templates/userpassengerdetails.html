@@ -1,0 +1,131 @@
+{% include 'usersheader.html' %}
+
+	<style type="text/css">
+
+
+  #hero{
+    background-image: url(/static/images/a3.jpg);
+  	height:1000px; 
+    
+  }
+</style>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" style="height: 1100px;">
+    <div class="hero-container">
+      
+<form method="post" enctype="multipart/form-data"> 
+<center>
+	<br><br><br><br>
+<h1>Passenger details</h1> 	 
+<table class="table" style="width: 500px;color: #fff;">
+	
+	<tr>
+		<td>First name</td>
+		<td><input type="text" class="form-control" name="first_name"></td> 
+	</tr>
+	<tr>
+		<td>Last name</td>
+		<td><input type="text" class="form-control" name="last_name"></td>
+	</tr>
+	<tr>
+		<td>Phone</td>
+		<td><input type="text" class="form-control" name="phone"></td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td><input type="text" class="form-control" name="email"></td>
+	</tr>
+	<tr>
+		<td>Dob</td>
+		<td><input type="date" class="form-control" name="dob"></td>
+	</tr>
+	<tr>
+		<td>Gender</td>
+		<td><input type="radio" name="gender" value="Male">Male<input type="radio" name="gender" value="Female">Female</td>
+	</tr>
+	<tr>
+		<td>House name</td>
+		<td><input type="text" class="form-control" name="house_name"></td> 
+	</tr>
+	<tr>
+		<td>Place</td>
+		<td><input type="text" class="form-control" name="place"></td>
+	</tr>
+	<tr>
+		<td>Country</td>
+		<td><input type="text" class="form-control" name="country"></td>
+	</tr>
+	<tr>
+		<td>Passport_no</td>
+		<td><input type="text" class="form-control" name="passport_no"></td>
+	</tr>
+	<tr>
+		<td>Validity_date</td>
+		<td><input type="date" class="form-control" name="validity_date"></td>
+	</tr>
+	<tr>
+		<td>Image1</td>
+		<td><input type="file" class="form-control" name="image1"></td>
+	</tr>
+	<tr>
+		<td>Image2</td>
+		<td><input type="file" class="form-control" name="image2"></td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="add"></td>  
+	</tr> 	
+</table> 
+</form>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+<center>
+<table class="table" style="width: 1200px;">
+	<tr>
+		<th>booked_id</th>  
+		<th>First name</th>
+		<th>Last name</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>Dob</th>
+		<th>Gender</th>
+		<th>House_name</th>
+		<th>Place</th>
+		<th>Country</th>
+		<th>Passport_no</th>
+		<th>Validity_date</th>
+		<th>Image1</th>
+		<th>Image2</th>
+
+		
+	</tr> 
+	{% for row in data['passengers'] %} 
+	<tr>
+		<td>{{ row['booked_id']}}</td> 
+		<td>{{ row['first_name']}}</td>
+		<td>{{ row['last_name']}}</td>
+		<td>{{ row['phone']}}</td>
+		<td>{{ row['email']}}</td>
+		<td>{{ row['dob']}}</td>
+		<td>{{ row['gender']}}</td>
+		<td>{{ row['house_name']}}</td>
+		<td>{{ row['place']}}</td>
+		<td>{{ row['country']}}</td>
+		<td>{{ row['passport_no']}}</td>
+
+		<td>{{ row['validity_date']}}</td>
+		<td><img style="width: 150px;height: 150px;" src="/{{ row['image1']}}"></td>
+		<td><img style="width: 150px;height: 150px;" src="/{{ row['image2']}}"></td>
+		
+		
+		<td><a class="btn btn-danger btn-sm" href="?action=delete&id={{ row['passenger_id']}}">delete</a></td> 
+	</tr>
+	{% endfor %} 
+</table> 		
+</center>
+{% include 'footer.html' %}  

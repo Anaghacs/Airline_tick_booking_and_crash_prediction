@@ -1,0 +1,89 @@
+{% include 'adminheader.html' %}
+
+<style type="text/css">
+	#hero{
+		background-image: url(/static/images/a4.jpg);
+		
+		
+	}
+</style>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+        <form action="" method="post">
+            <h2>Predict</h2><br>
+            <table class="table table-striped" style="width: 800px;">
+                <tr>
+                    <th>Air craft Maintenance</th>
+                    <td><select name="Aircraft Maintenance" id="">
+                        <option value="Maintenance issues reported">Maintenance issues reported</option>
+                        <option value="No recent maintenance">No recent maintenance</option>
+                        <option value="Regular maintenance checks performed every 6 months">Regular maintenance checks performed every 6 months</option>
+            
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>Weather Conditions</th>
+                    <td><select name="Weather Conditions" id="">
+                        <option value="Clear skies forecasted">Clear skies forecasted</option>
+                        <option value="Turbulent weather expected">Turbulent weather expected</option>
+                        <option value="Stormy weather expected">Stormy weather expected</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>Pilot Experience</th>
+                    <td><select name="Pilot Experience" id="">
+                        <option value="Pilot has a history of accidents">Pilot has a history of accidents</option>
+                        <option value="New pilot with less than 500 hours of flight time">New pilot with less than 500 hours of flight time</option>
+                        <option value="Experienced pilot with over 10,000 hours of flight time">Experienced pilot with over 10,000 hours of flight time</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>Air Traffic Control</th>
+                    <td><select name="Air Traffic Control" id="">
+                        <option value="Efficient communication between pilot and ATC">Efficient communication between pilot and ATC</option>
+                        <option value="ATC experiencing communication issues">ATC experiencing communication issues</option>
+                        <option value="Lack of communication between pilot and ATC">Lack of communication between pilot and ATC</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>Human Factors</th>
+                    <td><select name="Human Factors" id="">
+                        <option value="Crew distracted by personal issues">Crew distracted by personal issues</option>
+                        <option value="Crew fatigued due to extended flight delays"> Crew fatigued due to extended flight delays</option>
+                        <option value="Crew well-rested and focused">Crew well-rested and focused</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>Flight Operations</th>
+                    <td><select name="Flight Operations" id="">
+                        <option value="Insufficient fuel for the planned route">Insufficient fuel for the planned route</option>
+                        <option value="Lack of preparation for emergency scenarios">Lack of preparation for emergency scenarios</option>
+                        <option value="Thorough flight planning and fuel management">Thorough flight planning and fuel management</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>Security</th>
+                    <td><select name="Security" id="">
+                        <option value="Heightened security measures in place">Heightened security measures in place</option>
+                        <option value="Security concerns raised by crew or passengers">Security concerns raised by crew or passengers</option>
+                        <option value="Tightened security due to recent terrorist threats">Tightened security due to recent terrorist threats</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" name="submit" class="btn btn-info"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+<br><br><br>
+<center>
+ 		
+<br><br>
+{% include 'footer.html' %}  
+

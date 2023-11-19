@@ -1,0 +1,92 @@
+{% include 'usersheader.html' %}
+<style type="text/css">
+	td{
+		text-align: center;
+	}
+
+  #hero{
+    background-image: url(/static/images/aa1.jpg);
+  
+    
+  }
+  
+</style>
+
+
+	
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <!-- <h1>Easy start with Vlava</h1>
+      <h2>We are team of talanted designers making websites with Bootstrap</h2>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+<center>
+<h1>Search Here.</h1> 
+<form action="" method="post">
+<table>
+	<tr>
+		<td>
+			<input type="datetime-local" name="sdate" placeholder="Enter start date..." >
+			<input type="datetime-local" name="edate" placeholder="Enter end date..." >
+			<select name="fname" id="">
+				{%for row in data['port']%}
+				<option value="{{row['name']}}">{{row['name']}}</option>
+				{%endfor%}
+			</select>
+			<select name="lname" id="">
+				{%for row in data['port']%}
+				<option value="{{row['name']}}">{{row['name']}}</option>
+				{%endfor%}
+			</select>
+			<input type="submit" name="search" value="Search" class="btn btn-success">
+		</td>
+	</tr>
+</table>
+</form>
+
+{%if data['viewss']%}
+<table class="table" style="width: 1100px;">
+	<tr>
+		
+		<th>Flight</th>
+		<th>Company</th>
+		<th>No of seats</th>
+		<th>From Airport</th> 
+		<th>To Airport</th> 
+		<th>Start Date Time</th> 
+		<th>End Date Time</th> 
+		<th>Amount</th>
+
+	</tr>
+	{% for row in data['viewss'] %} 
+	<tr>
+		<td>{{ row['flight']}}</td> 
+		<td>{{ row['company']}}</td>
+		<td>{{ row['noofseats']}}</td>
+		<td>{{ row['fname']}}</td>
+		<td>{{ row['tname']}}</td>
+		<td>{{ row['start_date_time']}}</td>   
+		<td>{{ row['end_date_time']}}</td>
+		<td>{{ row['t_amount'] }}</td>  
+	
+		
+		<td><a class="btn btn-primary" href="userbook?sid={{ row['schedule_id']}}">bookticket</a> 	
+		
+	</tr>
+	{% endfor %} 
+</table>
+{%elif data['nodata']%}
+<h1 align="center">No flights....</h1> 	
+{%endif%}	
+{% include 'footer.html' %}   
+
+		
+
+		
+

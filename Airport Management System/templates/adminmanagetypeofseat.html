@@ -1,0 +1,68 @@
+{% include 'adminheader.html' %}
+
+<style type="text/css">
+	#hero{
+		background-image: url(/static/images/a2.jpg);
+		
+		
+	}
+	
+</style>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+       	
+<form method="post">
+<center>	
+{% if data['updatetypeofseat'] %} 
+<h1>Update Type Of Seat</h1>
+<table class="table" style="width: 500px;color : #fff;">	
+	<tr>
+		<td>Type</td>
+		<td><input type="text" class="form-control" name="type" value="{{ data['updatetypeofseat'][0]['type']}}"></td> 
+	</tr> 
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-warning" name="update" value="UPDATE"></td> 
+    </tr>	
+</table>
+{% else %}
+<h1>Add Type Of Seat</h1>
+<table class="table" style="width: 500px;color : #fff;">
+	<tr>
+		<td>Type</td>
+		<td><input type="text" class="form-control" name="type"></td> 
+	</tr>
+	<tr>
+		<td  colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="ADD"></td>
+	</tr>
+</table>
+{% endif %}
+</center>
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+ 
+<center>
+<table class="table" style="width: 600px;">
+	<h2>Seat Types</h2>
+	<tr>
+		<th>Type</th>
+	</tr>
+	{% for row in data['type'] %} 
+	<tr> 
+		<td>{{ row['type']}}</td>   
+		 
+		<td><a class="btn btn-danger" href="?action=delete&id={{ row['type_id']}}">delete</a></td>    
+		<td><a class="btn btn-warning" href="?action=update&id={{ row['type_id']}}">update</a></td>    
+		
+	</tr>
+	{% endfor %} 
+</table> 	
+</center>	
+
+{% include 'footer.html' %} 
+				    

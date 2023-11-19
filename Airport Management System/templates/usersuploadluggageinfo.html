@@ -1,0 +1,62 @@
+{% include 'usersheader.html' %}
+
+	<style type="text/css">
+
+
+  #hero{
+    background-image: url(/static/images/a6.jpg);
+  	
+    
+  }
+</style>
+
+ <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      	
+<form method="post">
+<center>	
+<h1>luggage info</h1> 
+<table class="table" style="width: 600px;color: #fff;">
+	<tr>
+		<td>total_weight</td>
+		<td><input type="text" class="form-control" name="total_weight"></td> 
+	</tr>
+	<tr>
+		<td>details</td>
+		<td><textarea class="form-control" name="details"></textarea></td> 
+	</tr>
+	
+
+
+	<tr>
+		<td colspan="2"  align="center"><input type="submit" class="btn btn-success" name="add" value="add"></td>  
+		
+	</tr>
+</table>  
+</form> 
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+<center>
+<table class="table" style="width: 800px;">
+	<tr> 
+		<th>total_weight</th>
+		<th>details</th>
+
+	</tr> 
+	{% for row in data['luggage_info'] %} 
+	<tr>
+		<td>{{ row['total_weight']}}</td>	
+		<td>{{ row['details']}}</td>	
+
+		<td><a class="btn btn-danger btn-sm" href="?action=delete&id={{ row['luggage_id']}}&bid={{data['bid']}}">delete</a> 
+	</tr>
+	{% endfor %}  
+</table> 		
+</center> 
+{% include 'footer.html' %}     
+	
+		

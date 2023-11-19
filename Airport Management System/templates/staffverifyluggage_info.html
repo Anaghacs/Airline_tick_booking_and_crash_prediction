@@ -1,0 +1,56 @@
+{% include 'staffheader.html' %}
+
+<style type="text/css">
+  #hero{
+    background-image: url(/static/images/a6.jpg);
+    
+    
+  }
+</style>
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+     <!--  <h1>Easy start with Vlava</h1>
+      <h2>We are team of talanted designers making websites with Bootstrap</h2>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+<center>
+<h1>luggageinfo</h1>
+
+
+<table class="table" style="width: 900px;"> 
+	<tr>
+		<th>Sl.no</th>
+		<th>Details</th>
+		<th>Total weights</th>
+		<th>booking status</th> 
+		 
+		
+		 
+		
+	</tr> 
+	{% for row in data['luggage_info'] %} 
+	<tr>
+		<td>{{loop.index}}</td>
+		<td>{{ row['details']}}</td>
+		<td>{{ row['total_weight']}}</td> 
+		<td>{{ row['status']}}</td>
+		{% if row['status']=='pending'%}    
+		
+		<td><a class="btn btn-success btn-sm" href="?action=approve&id={{ row['luggage_id']}}&bid={{ row['booked_id'] }}">approve</a></td>    
+        <td><a class="btn btn-danger btn-sm" href="?action=reject&id={{ row['luggage_id']}}&bid={{ row['booked_id'] }}">reject</a></td>  
+		
+		{% endif %} 
+          
+		
+	</tr>
+	{% endfor %} 
+</table> 		
+{% include 'footer.html' %}	   

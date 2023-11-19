@@ -1,0 +1,101 @@
+{% include 'usersheader.html' %} 
+<style type="text/css">
+	td{
+		text-align: center;
+	}
+
+  #hero{
+    background-image: url(/static/images/a2.jpg);  	
+    
+  }
+</style>
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+     <!--  <h1>Easy start with Vlava</h1>
+      <h2>We are team of talanted designers making websites with Bootstrap</h2>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+
+<center>
+
+	{% if data['stat'] %}
+
+	<h2>Flight Status</h2>
+
+	<table class="table" style="width: 800px;">
+		
+		<tr>
+			<th>Name</th>
+			<th>State</th>
+			<th>District</th>
+			<th>Status</th>
+		</tr>
+		{% for row in data['stat'] %}
+
+		<tr>
+			<td>{{ row['name'] }}</td>
+			<td>{{ row['state'] }}</td>
+			<td>{{ row['district'] }}</td>
+			<td>{{ row['type'] }}</td>
+			
+		</tr>
+		{% endfor %}
+	</table>
+
+
+
+	{% else %}
+
+<h2>View Tickets</h2>
+<table class="table" style="width: 1000px;">
+	<tr>
+		
+		<th>Flight</th>
+		<th>From airport</th> 
+		<th>To airport</th> 
+		<th>Start date time</th> 
+		<th>End date time</th> 
+		<th>Amount</th> 
+		<th>No of passengers</th> 
+		<th>Status</th> 
+
+	</tr>
+	{% for row in data['ticketsbooked'] %} 
+	<tr>
+		<td>{{ row['flight']}}</td> 
+		<td>{{ row['fname']}}</td>
+		<td>{{ row['tname']}}</td>
+		<td>{{ row['start_date_time']}}</td>  
+		<td>{{ row['end_date_time']}}</td> 	
+		<td>{{ row['amount']}}</td>
+		<td>{{ row['noofpassengers']}}</td> 
+		<td>{{ row['booked_status']}}</td> 
+		<td><a href="calcel_ticket?id={{row['booked_id']}}">Cancel Ticket</a></td>
+		{% if row['booked_status'] !="Paid" %}
+		<td><a class="btn btn-success btn-sm" href="usersmakepayment?action=ticket&bid={{ row['booked_id'] }}&amount={{ row['amount'] }}">Pay</a></td> 
+		{% endif %}
+		
+		<!-- <td><a class="btn btn-info" href="?action=stat&sh_id={{row['schedule_id']}}">View Status</a></td> -->
+		<td><a class="btn btn-primary" href="user_send_message?aaid={{ row['aaid'] }}&abid={{ row['abid'] }}">Send Message</a></td>
+
+			
+
+
+	</tr> 	
+	{% endfor %} 
+</table> 
+
+	{% endif %}
+
+</center>		
+{% include 'footer.html' %}     
+
+

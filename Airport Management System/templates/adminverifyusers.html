@@ -1,0 +1,51 @@
+{% include 'adminheader.html' %}
+
+
+<style type="text/css">
+	#hero{
+		background-image: url(/static/images/a41.jpg);
+		
+		
+	}
+	
+</style>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <!-- <h1>Easy start with Vlava</h1>
+      <h2>We are team of talanted designers making websites with Bootstrap</h2>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+<center>
+	<h2>User Details</h2>
+<table class="table" style="width: 1000px;">
+	<tr>
+		
+		<th>First name</th>
+		<th>Last name</th>
+		<th>Place</th> 
+		<th>Phone</th> 
+		<th>Email</th>
+		
+		
+	</tr> 
+	{% for row in data['users'] %} 
+	<tr>
+		
+		<td>{{ row['fname']}}</td>
+		<td>{{ row['lname']}}</td>
+		<td>{{ row['place']}}</td>
+		<td>{{ row['phone']}}</td>
+		<td>{{ row['email']}}</td>
+		
+          
+		
+	</tr>
+	{% endfor %} 
+</table> 	
+</center>	
+{% include 'footer.html' %}	

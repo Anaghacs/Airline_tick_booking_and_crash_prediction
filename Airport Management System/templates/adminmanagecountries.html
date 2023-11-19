@@ -1,0 +1,72 @@
+{% include 'adminheader.html' %}
+<style type="text/css">
+	#hero{
+		background-image: url(/static/images/aa4.jpg);
+		
+		
+	}
+</style>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      
+  	
+<form method="post">
+<center>	
+
+{% if data['updatecountries'] %} 
+<h1>Update Countries</h1> 
+<table class="table" style="width: 500px;color: #fff;">
+	<tr>
+		<td>Country</td> 
+		<td><input type="text" name="country" class="form-control" value="{{data['updatecountries'][0]['country']}}"></td> 
+	</tr>
+
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-warning" name="update" value="update"></td>  
+</table>
+{% else %}
+
+<h1>Add Countries</h1> 
+<table class="table" style="width: 500px;color: #fff;">   
+	<tr>
+		<td>Country</td> 
+		<td><input type="text" class="form-control" name="country"></td>  
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="submit" value="Add"></td> 
+	</tr>	
+</table>
+{% endif %} 
+
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+<br><br><br><br>
+<center>
+<table class="table" style="width: 500px;"> 
+	<h2>Country Details</h2><br>
+	<tr>
+		<th>Country</th>  
+		
+	</tr> 
+	{% for row in data['countries'] %} 
+	<tr>
+		<td>{{ row['country']}}</td> 
+		
+		<td><a class="btn btn-warning" href="?action=update&id={{ row['country_id']}}">update</a> 
+		<td><a class="btn btn-danger" href="?action=delete&id={{ row['country_id']}}">delete</a> 
+	</tr>
+	{% endfor %} 
+</table> 		
+</center>
+
+{% include 'footer.html' %}    
+
+ 	
+	
+
+	

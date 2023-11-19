@@ -1,0 +1,62 @@
+{% include 'usersheader.html' %}
+<style type="text/css">
+	
+
+  #hero{
+    background-image: url(/static/images/a91.jpg);  	
+    
+  }
+</style>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      	
+<form method="post">
+	<center>
+
+<h1>Feedback</h1>
+<table class="table" style="width: 600px;color: #fff;">
+	
+	<tr>
+		<td>Feedback</td>
+		<td><textarea name="feedb"  class="form-control"></textarea></td>
+	</tr>
+	
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="feeds" value="SEND"></td>
+	</tr>
+</table>
+
+
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+
+<center>
+<table class="table" style="width: 800px;">
+	<br>
+	<h2>Feedback Details</h2>
+	<br>
+	<tr>
+		<th>Feedback</th> 
+		<th>Date</th>
+		
+	</tr>
+	{% for row in data['feed'] %} 
+	<tr> 
+		<td>{{ row['feedback']}}</td> 
+		<td>{{ row['date']}}</td>
+		
+	</tr>
+	{% endfor %} 
+</table> 		
+</center>
+
+
+{% include 'footer.html' %} 
+	

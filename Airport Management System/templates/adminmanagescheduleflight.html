@@ -1,0 +1,105 @@
+{% include 'adminheader.html' %}
+
+<style type="text/css">
+	#hero{
+		background-image: url(/static/images/a8.jpg);
+		
+		
+	}
+	
+</style>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" style="height: 800px;">
+    <div class="hero-container">
+       	
+<form method="post">
+<center>	
+<h1>add schedule flight</h1> 
+<table class="table" style="width: 500px;color: #fff;">
+	<tr>
+		<td>Flight Name</td> 
+		<td><select name="flight_id" class="form-control"> 
+			<option selected>select</option> 
+			{% for row in data['flight_id'] %}  
+				<option value="{{ row['flight_id']}}">{{ row['flight']}}</option>  
+			{% endfor %} 
+		</select>
+		</td>	
+	</tr>
+	
+	<tr>
+		<td>From Airport</td>
+		<td><select name="from_airport_id" class="form-control"> 
+			<option selected>select</option> 
+			{% for row in data['from_airport_id'] %}  
+				<option value="{{ row['airport_id']}}">{{ row['name']}}</option>  
+			{% endfor %} 
+		</select>
+		</td>	
+	</tr>
+		
+	<tr>
+		<td>To Airport</td>
+		<td><select name="to_airport_id" class="form-control"> 
+			<option selected>select</option> 
+			{% for row in data['to_airport_id'] %}  
+				<option value="{{ row['airport_id']}}">{{ row['name']}}</option>  
+			{% endfor %} 
+		</select>
+		</td>	
+
+	</tr>	
+	<tr>
+		<td>Start Date Time</td>
+		<td><input type="datetime-local" class="form-control" name="start_date_time"></td>
+	</tr>
+	<tr>
+		<td>End DateTime</td>
+		<td><input type="datetime-local" class="form-control" name="end_date_time"></td>
+	</tr>
+	<tr>
+		<td>Amount</td>
+		<td><input type="text" class="form-control" name="amount"></td>
+	</tr>
+
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="Add"></td> 
+	</tr> 
+</table> 
+</center>
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+ <center>
+ 	<h2>Schedule Details</h2>
+<table class="table" style="width: 900px;">
+	<tr>
+		<th>Flight</th>  
+		<th>Fromairport</th>
+		<th>Toairport</th> 
+		<th>Startdatetime</th> 
+		<th>Enddatetime</th> 
+		<th>Amount</th>
+
+		
+	</tr> 
+	{% for row in data['flight_schedule'] %} 
+	<tr>
+		<td>{{ row['flight']}}</td> 
+		<td>{{ row['fname']}}</td>
+		<td>{{ row['tname']}}</td>
+		<td>{{ row['start_date_time']}}</td>  
+		<td>{{ row['end_date_time']}}</td> 
+		<td>{{ row['t_amount'] }}</td>
+
+		
+		<td><a class="btn btn-danger" href="?action=delete&id={{ row['schedule_id']}}">delete</a> 
+
+	</tr>
+	{% endfor %} 
+</table> 		
+{% include 'footer.html' %}  	

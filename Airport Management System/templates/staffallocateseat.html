@@ -1,0 +1,74 @@
+{% include 'staffheader.html' %}
+<style type="text/css">
+  #hero{
+    background-image: url(/static/images/a41.jpg);
+    
+    
+  }
+</style>
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+     <!--  <h1>Easy start with Vlava</h1>
+      <h2>We are team of talanted designers making websites with Bootstrap</h2>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+<form method="post">
+<center>	
+
+	{% if data['viewseats'] %}
+
+	<table class="table" style="width: 700px;">
+	<tr>
+		<th>passenger</th> 
+		<th>seatno</th>
+		
+
+	</tr>
+	{% for row in data['viewseats'] %} 
+	<tr> 
+		<td>{{ row['NAMES']}}</td> 
+		<td>{{ row['seatno']}}</td> 
+		<td><a class="btn btn-danger" href="?actions=delete&id={{ row['assign_id']}}&bid={{ data['bid'] }}&pid={{ data['pid'] }}&pname={{ data['names'] }}&fid={{ data['fid'] }}">delete</a></td>    
+
+	</tr>
+	{% endfor %} 
+</table> 		
+
+
+{% else %}
+
+<h1>allocate seat</h1>	
+
+<table class="table" style="width: 600px;"> 
+	<tr> 	
+		<td>passenger</td> 
+		<td><input type="text" class="form-control" name="passenger_id" value="{{data['names']}}" readonly=""></td> 
+	</tr>
+	<tr>
+		<td>seatno</td>
+		<td><select name="seat_id" class="form-control"> 
+			<option selected>select</option> 
+			{% for row in data['viewseat'] %}  
+				<option value="{{ row['seat_id']}}">{{ row['seatno']}}</option>  
+			{% endfor %} 
+		</select>
+		</td>	
+	</tr>
+	
+	<tr> 
+		<td colspan="2" align="center"> <input type="submit" class="btn btn-success" name="add" value="Add"></td>  
+	</tr> 
+</table>
+
+</form> 
+
+{% endif %}
+
+{% include 'footer.html' %}   

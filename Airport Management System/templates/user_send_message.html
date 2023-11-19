@@ -1,0 +1,74 @@
+{% include 'usersheader.html' %}
+<style type="text/css">
+	
+
+  #hero{
+    background-image: url(/static/images/a1.jpg);  	
+    
+  }
+</style>
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+     
+<form method="post">
+	<center>
+
+<h1>Message</h1>
+<table class="table" style="width: 500px;color: #fff;">
+	
+	<tr>
+		<td>Staff</td>
+		<td><select name="stf" class="form-control">
+			{% for row in data['view_staffs'] %}
+			<option value="{{ row['login_id'] }}">{{ row['staff_name'] }}</option>
+			{% endfor %}
+		</select></td>
+	</tr>
+	<tr> 
+		<td>Message</td>
+		<td><textarea class="form-control" name="msg"></textarea></td>
+	</tr>
+	
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="msgs" value="SEND"></td>
+	</tr>
+</table>
+
+
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+<center>
+
+<table class="table" style="width: 800px;">
+	<br>
+	<h2>Message Details</h2>
+	<br>
+	<tr>
+		
+		<th>Staff</th>
+		<th>Message</th> 
+		<th>Reply</th>
+		
+	</tr>
+	{% for row in data['msg'] %} 
+	<tr> 
+		
+		<td>{{ row['firstname'] }} {{ row['lastname'] }}</td> 
+		<td>{{ row['message']}}</td>
+		<td>{{ row['reply']}}</td>
+		
+	</tr>
+	{% endfor %} 
+</table> 		
+</center>
+
+
+{% include 'footer.html' %} 
+	

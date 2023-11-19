@@ -1,0 +1,36 @@
+{% include 'usersheader.html' %}
+
+<center>	
+<h1>viewflights</h1> 
+<table>
+	<tr>
+
+		<th>flight</th>  
+		
+		<th>noofseats</th> 
+		<th>schedule id</th>
+		<th>start date time</th>
+		<th>end date time</th>
+	</tr>
+	{% for row in data['flights'] %} 
+	<tr>
+		<td>{{ row['flight']}}</td> 
+			
+		<td>{{ row['noofseats']}}</td>	
+		<td>{{ row['schedule_id']}}</td>	
+			
+		<td>{{ row['start_date_time']}}</td>	
+		<td>{{ row['end_date_time']}}</td>	
+		
+		
+		
+
+		<td><a href="userviewpendingseat?id={{ row['seat_id']}}">viewpendingseat</a></td>     
+
+		<!-- <td><a href="?action=delete&id={{ row['flight_id']}}">delete</a>  -->
+	</tr>
+	{% endfor %} 
+</table> 		
+</center>
+{% include 'footer.html' %}     
+		

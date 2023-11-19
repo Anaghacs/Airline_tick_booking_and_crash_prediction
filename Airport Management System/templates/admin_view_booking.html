@@ -1,0 +1,61 @@
+{%include 'adminheader.html'%}
+
+
+
+<style type="text/css">
+    #hero{
+      background-image: url(/static/images/a41.jpg);
+      
+      
+    }
+  </style>
+  
+  
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+      <div class="hero-container">
+        <!-- <h1>Easy start with Vlava</h1>
+        <h2>We are team of talanted designers making websites with Bootstrap</h2>
+        <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
+      </div>
+    </section><!-- End Hero -->
+  
+    <main id="main">
+  
+  <center>
+  <h1>Booked Tickets</h1>
+  
+  <table class="table" style="width: 1200px;">
+      <tr>
+          <th>Sl.no</th>
+          <th>Flight</th>
+          <th>From airport</th>
+          <th>To airport</th>
+          <th>User</th>
+          <th>Amount</th>
+          <th>No of passengers</th> 
+          <th>Booked status</th> 
+          <th>View Passengers</th>
+  
+      </tr>	
+          
+          
+          
+       
+      {% for row in data['ticketsbooked'] %} 
+      <tr>
+          <td>{{ loop.index}}</td>
+          
+          <td>{{ row['flight']}}</td>
+          
+          <td>{{ row['from_airport_name']}}</td>
+          <td>{{ row['to_airport_name']}}</td>
+          <td>{{ row['frname']}}</td>
+          <td>{{ row['amount']}}</td>
+          <td>{{ row['noofpassengers']}}</td> 
+          <td>{{ row['booked_status']}}</td> 
+          <td><a href="view_passengers?bid={{ row['booked_id'] }}&fid={{ row['flight_id'] }}">View Passengers</a></td>
+      </tr>
+      {% endfor %} 
+  </table>
+  {% include 'footer.html' %}	   

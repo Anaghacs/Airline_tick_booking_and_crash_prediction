@@ -1,0 +1,72 @@
+{% include 'adminheader.html' %}
+<style type="text/css">
+	#hero{
+		background-image: url(/static/images/b2.jpg);
+		height: 670px;
+		
+	}
+</style>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+       	
+<form method="post">
+<center>	
+<h1>add hotels</h1>
+<table class="table" style="width: 500px;color: #fff;">
+	<tr>
+		<td>place</td> 
+		<td><select name="place_id" class="form-control"> 
+			<option selected>select</option> 
+			{% for row in data['place'] %}   
+				<option value="{{ row['place_id']}}">{{ row['place']}}</option>  
+			{% endfor %} 
+		</select>
+		</td>	
+	</tr>
+	<tr>
+		<td>hotel</td>
+		<td><input type="text" class="form-control" name="hotel"></td> 
+	</tr>
+	<tr>
+		<td>pincode</td>
+		<td><input type="text" class="form-control" name="pincode"></td>
+	</tr>
+	
+	
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="tn btn-success" name="add" value="add"></td>
+	</tr>
+</table>
+</center>
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+ <center>
+ 	<h2>Hotel Details</h2>
+<table class="table" style="width: 800px;">
+	<tr>
+		<th>place</th> 
+		<th>hotel</th>
+		<th>pincode</th>  
+		
+	</tr>
+	{% for row in data['hotels'] %} 
+	<tr> 
+		<td>{{ row['place']}}</td> 
+		<td>{{ row['hotel']}}</td>
+		<td>{{ row['pincode']}}</td> 
+		
+
+		<td><a class="btn btn-danger" href="?action=delete&id={{ row['hotel_id']}}">delete</a></td>    
+		
+		
+	</tr>
+	{% endfor %} 
+</table> 		
+
+{% include 'footer.html' %} 	

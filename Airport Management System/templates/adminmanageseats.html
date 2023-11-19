@@ -1,0 +1,110 @@
+{% include 'adminheader.html' %}
+<style type="text/css">
+	#hero{
+		background-image: url(/static/images/a2.jpg);
+		
+		
+	}
+	td{
+		text-align: center;
+	}
+</style>
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      	
+<form method="post">
+<center>	
+
+{% if data['updateseats'] %} 
+<h1>Update Seats</h1> 
+<table class="table" style="width: 500px;color : #fff;">
+	<tr>
+		<td>Type</td> 
+		<td><select name="type_id" class="form-control"> 
+			{% for row in data['updatetype'] %}  
+				<option value="{{ row['type_id']}}">{{ row['type']}}</option>  
+			{% endfor %} 
+		</select> 
+		</td>	
+	</tr> 
+	<tr>
+		<td>Flight</td>
+		<td><select name="flight_id" class="form-control"> 
+			{% for row in data['updateflights'] %} 
+				<option value="{{ row['flight_id']}}">{{ row['flight']}}</option> 
+			{% endfor %} 
+		</select> 
+		</td>	    
+	</tr>	
+	<tr>
+		<td>Seat No.</td>
+		<td><input type="text"class="form-control" name="seatno" value="{{ data['updateseats'][0]['seatno']}}"></td>     
+	</tr>		
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-warning" name="update" value="update"></td>  
+	</tr> 	
+</table> 
+{% else %}
+<h1>Add Seats</h1> 
+<table class="table" style="width: 500px;color : #fff;">
+	<tr>
+		<td>Type</td> 
+		<td><select name="type_id" class="form-control"> 
+			<option selected>--select--</option> 
+			{% for row in data['type_id'] %} 
+				<option value="{{ row['type_id']}}">{{ row['type']}}</option> 
+			{% endfor %} 
+		</select>
+		</td>	
+	</tr>
+	<tr>
+		<td>Flight</td>
+		<td><select name="flight_id" class="form-control"> 
+			<option selected>--select--</option> 
+			{% for row in data['flight_id'] %} 
+				<option value="{{ row['flight_id']}}">{{ row['flight']}}</option> 
+			{% endfor %} 
+		</select>
+		</td>	
+	</tr>
+	<tr>
+		<td>Seat No.</td>
+		<td><input type="text" class="form-control" name="seatno"></td>
+	</tr>	
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="Add"></td> 
+	</tr> 
+</table>
+{% endif %} 
+</center>
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+  
+<center>
+<table class="table" style="width: 700px;">
+	<h2>Seats Details</h2>
+	<tr>
+		<th>Type</th>  
+		<th>Flight</th>
+		<th>Seat No</th> 
+		
+	</tr> 
+	{% for row in data['seats'] %} 
+	<tr>
+		<td>{{ row['type']}}</td> 
+		<td>{{ row['flight']}}</td>
+		<td>{{ row['seatno']}}</td> 
+		<td><a class="btn btn-warning" href="?action=update&id={{ row['seat_id']}}">update</a> 
+		<td><a class="btn btn-danger" href="?action=delete&id={{ row['seat_id']}}">delete</a> 
+	</tr>
+	{% endfor %} 
+</table> 	
+</center>	
+{% include 'footer.html' %}  

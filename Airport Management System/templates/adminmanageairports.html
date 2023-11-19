@@ -1,0 +1,114 @@
+{% include 'adminheader.html' %}
+
+<style type="text/css">
+	#hero{
+		background-image: url(/static/images/a3.jpg);
+		height: 670px;
+		
+	}
+</style>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+       	
+<form method="post">
+	<center>
+{% if data['updateairports'] %} 
+
+<h1>Update Airports</h1>
+<table class="table" style="width: 500px;color: #fff;">
+	<tr>
+		<td>Place</td> 
+		<td><select name="place_id" class="form-control"> 
+			{% for row in data['updateplace'] %} 
+				<option value="{{ row['place_id']}}">{{ row['place']}}</option> 
+			{% endfor %} 
+		</select>
+		</td>		
+	</tr>  
+	<tr>
+		<td>Name</td> 
+		<td><input type="text" class="form-control" name="name" value="{{ data['updateairports'][0]['name']}}"></td> 
+	</tr>
+	<tr>
+		<td>District</td>
+		<td><input type="text" class="form-control" name="district" value="{{ data['updateairports'][0]['district']}}"></td> 
+	</tr>
+	<tr>
+		<td>State</td>
+		<td><input type="text" class="form-control" name="state" value="{{ data['updateairports'][0]['state']}}"></td> 
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btn btn-warning" name="update" value="update"></td> 
+	</tr>	
+</table>
+
+{% else %}
+<center>
+<h1>Add Airports</h1>
+<table class="table" style="width: 500px;color: #fff;">
+	<tr>
+		<td>Place</td> 
+		<td><select name="place_id" class="form-control"> 
+			<option selected>--select--</option> 
+			{% for row in data['place_id'] %}  
+				<option value="{{ row['place_id']}}">{{ row['place']}}</option>  
+			{% endfor %} 
+		</select>
+		</td>	
+	</tr>
+	<tr>
+		<td>Name</td>
+		<td><input type="text" class="form-control" name="name"></td> 
+	</tr>
+	<tr>
+		<td>District</td>
+		<td><input type="text" class="form-control" name="district"></td>
+	</tr>
+	<tr>
+		<td>State</td>
+		<td><input type="text" class="form-control" name="state"></td>
+	</tr>
+	
+	<tr>
+		<td colspan="2" align="center"><input type="submit" class="btnbtn-success" name="add" value="ADD"></td>
+	</tr>
+</table>
+
+{% endif %}	
+</form>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+ <center>
+<table class="table" style="width: 800px;">
+	<br>
+	<h2>Airport Details</h2>
+	<br>
+	<tr>
+		<th>Place</th> 
+		<th>Name</th>
+		<th>District</th>  
+		<th>State</th>
+	</tr>
+	{% for row in data['airports'] %} 
+	<tr> 
+		<td>{{ row['place']}}</td> 
+		<td>{{ row['name']}}</td>
+		<td>{{ row['district']}}</td> 
+		<td>{{ row['state']}}</td> 
+
+		<td><a class="btn btn-danger" href="?action=delete&id={{ row['airport_id']}}">delete</a></td>    
+		<td><a class="btn btn-warning" href="?action=update&id={{ row['airport_id']}}">update</a></td>   
+		
+	</tr>
+	{% endfor %} 
+</table> 		
+</center>
+</center>
+
+{% include 'footer.html' %} 
+	
